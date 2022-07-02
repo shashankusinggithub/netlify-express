@@ -1,9 +1,10 @@
 .imgg {
-    height: 450px;
+    height: 400px;
     opacity: 1;
     display: block;
     
     transition: .5s ease;
+    
     
   }
 

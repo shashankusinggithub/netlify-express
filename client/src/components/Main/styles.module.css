@@ -33,27 +33,22 @@
 .search_things{
 	/* background-color: bisque; */
 	display: flex;
-	justify-content: end;
+	justify-content:flex-end;
 	padding: 15px;
-	
-	
+
+		
 	
 }
+
+
 .movies_row {
-	/* height: 370px; */
-	/* background-color: #333; */
 	display: flex;
     flex-wrap: nowrap;
-    /* gap: 20px; */
     overflow-y:hidden;
 	overflow-x:scroll;
-	position: inherit;
-	
-	gap:30px;
-	
-	
-    /* flex-direction: column; */
-    padding:40px;
+	position: inherit;	
+	gap:0.1% ;   
+    padding:20px;
   }
 		
   .movies_row::-webkit-scrollbar-thumb {
@@ -74,7 +69,6 @@
 
 .fav_head{
 	margin-left: 2%;
-
 	color: aliceblue;
 }
 
