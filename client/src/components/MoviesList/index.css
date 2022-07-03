@@ -85,7 +85,7 @@
   .container > h1{
   position: absolute;
  
-  font-size: 40px;
+  /* font-size: 40px; */
   bottom: 0;
   left: 17px;
   right:13px;
@@ -113,7 +113,7 @@ height: 40px;
   .container > h1{
   position: absolute;
  
-  font-size: 20px;
+  /* font-size: 40px; */
   
   margin-left: 9px;
   margin-right:10px;
