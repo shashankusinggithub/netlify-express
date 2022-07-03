@@ -78,6 +78,12 @@ const Movie = () => {
         });
     }, []);
 
+    function copy(value) { 
+        navigator.clipboard.writeText(value);
+    };
+    
+    copy("Hello World");
+
     return (
         <div className={styles.main_container}>
 
@@ -98,8 +104,10 @@ const Movie = () => {
                 <h1 className={styles.fav_head} >Favourites</h1>
                 <div className={styles.prvt_head}><button className={styles.white_btn} onClick={() => prvt()} >
                     {privat ? 'Public' : "Private"} </button>
-                    {!privat && <a href={`/playlistuser/` + userid} >
-                        COPY Me.....</a>}
+                    {!privat &&
+                    //  <a href={`/playlistuser/` + userid} >
+                    //     COPY Me.....</a>
+                        <button className={styles.copy_button} onClick={()=> copy(window.location.origin+`/playlistuser/` + 'userid')}>CLICK TO COPY</button>}
                 </div>
             </div>
             <div className={styles.list_row}>
