@@ -99,7 +99,7 @@ const Movie = () => {
                 <div className={styles.prvt_head}><button className={styles.white_btn} onClick={() => prvt()} >
                     {privat ? 'Public' : "Private"} </button>
                     {!privat && <a href={`/playlistuser/` + userid} >
-                        SHARE ME .....</a>}
+                        COPY Me.....</a>}
                 </div>
             </div>
             <div className={styles.list_row}>
