@@ -101,7 +101,11 @@
 .heart_full {
 height: 40px;
   
-}}
+}
+.imgg{
+  height: 50vh
+}
+  }
      
 
 
@@ -111,10 +115,9 @@ height: 40px;
  
   font-size: 20px;
   
-  left: 17px;
-  right:13px;
-  /* top: 50px; */
-  bottom:10px;
+  margin-left: 9px;
+  margin-right:10px;
+  
   text-align: center;
 }
 .heart {
@@ -123,8 +126,12 @@ height: 40px;
 
 .heart_full {
 height: 40px;
+}
+.imgg{
+  height: 60vh
+}
   
-}}
+}
 
 
 
