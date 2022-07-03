@@ -107,7 +107,7 @@ const Movie = () => {
                     {!privat &&
                     //  <a href={`/playlistuser/` + userid} >
                     //     COPY Me.....</a>
-                        <button className={styles.copy_button} onClick={()=> copy(window.location.origin+`/playlistuser/` + 'userid')}>CLICK TO COPY</button>}
+                        <button className={styles.copy_button} onClick={()=> copy(window.location.origin+`/playlistuser/` + userid)}>CLICK TO COPY</button>}
                 </div>
             </div>
             <div className={styles.list_row}>
