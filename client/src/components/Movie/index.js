@@ -78,13 +78,12 @@ const Movie = () => {
         });
     }, []);
 
-    
     function copy(value) { 
         navigator.clipboard.writeText(value)
-
         
     };
-   
+    
+    
 
     return (
         <div className={styles.main_container}>
