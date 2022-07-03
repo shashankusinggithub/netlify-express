@@ -1,9 +1,9 @@
 .search{
-	height: 50px;
+	height: 5vh;
     width: 100%;
     
     border-radius: 7px;
-    font-size: 30px;
+    font-size: 3ch;
     text-align: center;
     /* margin-left: auto; */
     margin-right: auto;

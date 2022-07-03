@@ -11,7 +11,7 @@ const Main = () => {
 	return (
 		<div className={styles.main_container}>
 			<nav className={styles.navbar}>
-				<h1>Movies Fun</h1>
+				<h1>Movies Search App</h1>
 				<div>
 					<button className={styles.white_btn} onClick={handleLogout}>
 						Logout
