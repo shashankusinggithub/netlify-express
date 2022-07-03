@@ -46,6 +46,7 @@
 	outline: none;
 	border: none;
 	width: 50vw;
+	max-width: 370px;
 	padding: 15px;
 	border-radius: 10px;
 	background-color: #edf5f3;
