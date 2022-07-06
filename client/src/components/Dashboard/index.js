@@ -8,9 +8,9 @@ const Dashboard = () => {
     const handleLogout = () => {
         // window.location.reload()
         window.location.replace('/');
-    }; 
-    
-    const params = useParams().id 
+    };
+
+    const params = useParams().id
 
     const [details, setDetails] = React.useState([]);
     const [title, setTitle] = React.useState('');
@@ -39,14 +39,16 @@ const Dashboard = () => {
             <h1 className={styles.fav_head} >{title}</h1>
             <div className={styles.list_row}>
                 <div className={styles.movies_row}>
-                    {<MovieList
-                        movies={details}
-                        handleFavouritesClick={() => { }}
-                        heart={true}
-                    />}
-                </div>
-            </div>
-        </div>
+                    {details.map((movie, index) => (
+                        <div className="container" key={index}>
+                            <h1>{movie.Title}</h1>
+                            <img
+                                className="imgg"
+                                src={movie.Poster}
+                                alt='movie'></img>
+                        </div>))}
+
+                </div></div></div>
     );
 };
 
