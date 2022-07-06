@@ -8,8 +8,9 @@ const userSchema = new mongoose.Schema({
 	lastName: { type: String, required: true },
 	email: { type: String, required: true },
 	password: { type: String, required: true },
-	playlist:{ type: [Object], default : []},
-	private:{type: Boolean, default :true}
+	favorite:{ type: [Object], default : []},
+	favprivate:{type: Boolean, default :true},
+	playlists:{ type: [Object], default : []}
 	
 });
 
@@ -20,7 +21,7 @@ userSchema.methods.generateAuthToken = function () {
 	return token;
 };
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("newuser", userSchema);
 
 const validate = (data) => {
 	const schema = Joi.object({

@@ -18,6 +18,10 @@
     cursor: pointer;
     
 }
+.removeplaylist{
+  position: absolute;
+  height: 30px;
+}
 
 .heart_full {
   height: 80px;

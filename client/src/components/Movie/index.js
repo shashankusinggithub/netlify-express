@@ -15,28 +15,24 @@ const Movie = () => {
     const [searchValue, setSearchValue] = useState('');
 
     function addToPlaylist(movie) {
-        axios
-            .put("/playlistadd", movie, { headers })
+        axios.put("/favoriteadd", movie, { headers })
     }
 
     function removeFromPlaylist(movie) {
-        axios
-            .put("/playlistdel", movie, { headers })
+        axios.put("/favoritedel", movie, { headers })
     }
 
     const getMovieRequest = async (searchValue) => {
         const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
-
         const response = await fetch(url);
         const responseJson = await response.json();
-
         if (responseJson.Search) {
             setMovies(responseJson.Search);
         }
     };
 
     useEffect(() => {
-        axios.get('/playlist', { headers }).then((response) => {
+        axios.get('/favorite', { headers }).then((response) => {
             setFavourites(response.data);
         });
     }, []);
@@ -48,7 +44,6 @@ const Movie = () => {
     const addFavouriteMovie = (movie) => {
         const newFavouriteList = [...favourites, movie];
         setFavourites(newFavouriteList);
-
         addToPlaylist(movie)
     };
 
@@ -56,7 +51,6 @@ const Movie = () => {
         const newFavouriteList = favourites.filter(
             (favourite) => favourite.imdbID !== movie.imdbID
         );
-
         setFavourites(newFavouriteList);
         removeFromPlaylist(movie);
     };
@@ -65,25 +59,31 @@ const Movie = () => {
     const [userid, setuserID] = useState('');
 
     function prvt() {
-        axios.put('/pvt', privat, { headers }).then((response) => {
+        axios.put('/favoritepvt', privat, { headers }).then((response) => {
             setPrivate(response.data.private)
             setuserID(response.data.id);
         });
     }
 
     useEffect(() => {
-        axios.get('/pvt', { headers }).then((response) => {
+        axios.get('/favoritepvt', { headers }).then((response) => {
             setPrivate(response.data.private)
             setuserID(response.data.id);
         });
     }, []);
 
-    function copy(value) { 
+    function copy(value) {
         navigator.clipboard.writeText(value)
-        
     };
-    
-    
+
+    const [playlist, setPlaylist] = useState(null)
+    useEffect(() => {
+        axios.get('/selfplaylist/getlist', { headers }).then((response) => {
+            setPlaylist(response.data)
+
+        })
+    }, [])
+
 
     return (
         <div className={styles.main_container}>
@@ -95,6 +95,7 @@ const Movie = () => {
             <div className={styles.list_row}>
                 <div className={styles.movies_row}>
                     <MovieList
+                        // noplaylist={true}
                         movies={movies}
                         handleFavouritesClick={addFavouriteMovie}
                         heart={false}
@@ -102,20 +103,15 @@ const Movie = () => {
                 </div>
             </div>
             <div >
-                <h1 className={styles.fav_head} >Favourites</h1>
-                <div className={styles.prvt_head}><button className={styles.white_btn} onClick={() => prvt()} >
-                    {privat ? 'Public' : "Private"} </button>
-                    {!privat &&
-                    //  <a href={`/playlistuser/` + userid} >
-                    //     COPY Me.....</a>
-                        <button className={styles.copy_button} onClick={()=> copy(window.location.origin+`/playlistuser/` + userid)}>CLICK TO COPY</button>}
-                </div>
+                <h1 className={styles.fav_head} >Liked</h1>
+                
             </div>
             <div className={styles.list_row}>
                 <div className={styles.movies_row}>
                     <MovieList
+                        // noplaylist={false}
                         movies={favourites}
-
+                        
                         handleFavouritesClick={removeFavouriteMovie}
                         heart={true}
                     />

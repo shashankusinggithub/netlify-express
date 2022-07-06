@@ -1,17 +1,18 @@
 
 const asyncHandler = require('express-async-handler')
-const {User} = require('../models/user')
+
+const {Playlist} = require("../models/playlist")
 
 const fletch = asyncHandler(async (req, res, next) => { 
   {
-    
     try {
       
       // Get user from the token
-      req.user = await User.findById(req.params.id)
+      req.playlist = await Playlist.findById(req.params.id)
+      
 
       // check if user exists
-      if (req.user.private === true){
+      if (req.playlist.private === true){
         res.status(401)
         throw new Error('Not authorized')
       }      

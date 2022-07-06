@@ -1,8 +1,30 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import "./index.css"
+import axios from "axios";
 import heart from './heart.png'
+import Playlistbox from "../Playlistbox";
+import removeitem from "./playlist-remove-512.webp"
+
+const token = localStorage.getItem("token")
+const headers = {
+	authorization: token
+}
 
 const MovieList = (props) => {
+	const [details, setDetails] = React.useState([]);
+	
+	useEffect(() => {
+		axios.get('/selfplaylist/getlist', { headers }).then((response) => {
+			setDetails(response.data)
+			// console.log(response.data)
+	
+		})
+	}, [details])
+
+	const removefromplaylist=  async (play, movie)=>{
+        await axios.post("selfplaylist/removefromplaylist", {playid : props.playlistid, movie : movie}, {headers})
+    }
 	return (
 		<>
 			{props.movies.map((movie, index) => (
@@ -13,9 +35,21 @@ const MovieList = (props) => {
 						src={movie.Poster}
 						alt='movie'></img>
 					<img key={index} 
-					onClick={props.handleFavouritesClick ? () => props.handleFavouritesClick(movie) : () => { }}
+					onClick={props.handleFavouritesClick ? 
+						() => props.handleFavouritesClick(movie):
+						() => {}}
 					alt='heart'
 					className={!props.heart ? ' heart ' : 'heart_full'} src={heart} />
+					{props.handleFavouritesClick && <Playlistbox
+					playid={props.playlistid}
+					details={details}				
+					movie={movie}
+					setDetails={setDetails}					
+					/>}
+					{props.playlistid && <img  src={removeitem} className="removeplaylist"
+					onClick={()=> removefromplaylist(props.playlistid, movie)}/>}
+					
+
 				</div>
 			))}
 		</>

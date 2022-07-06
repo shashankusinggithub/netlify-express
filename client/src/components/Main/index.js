@@ -13,6 +13,9 @@ const Main = () => {
 			<nav className={styles.navbar}>
 				<h1>Movies Search App</h1>
 				<div>
+					<button className={styles.white_btn} onClick={()=>window.location.replace("./playlists")}>
+						Playlist
+					</button>
 					<button className={styles.white_btn} onClick={handleLogout}>
 						Logout
 					</button>

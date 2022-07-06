@@ -4,6 +4,8 @@ import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import Playlist from "./components/Playlists"
+
 
 
 function App() {
@@ -14,7 +16,8 @@ function App() {
 			<Route path="/signup" exact element={<Signup />} />
 			<Route path="/login" exact element={<Login />} />
 			<Route path="/" element={<Navigate replace to="/login" />} />
-			<Route path="/playlistuser/:id" element={ <Dashboard />} />
+			<Route path="/playlistuser/:id" element={ <Dashboard />} />c
+			<Route path="/playlists" element={ <Playlist />} />
 			
 	</Routes>
   );

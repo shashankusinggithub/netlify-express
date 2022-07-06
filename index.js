@@ -13,30 +13,32 @@ connection();
 // all Routs
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
-const playlistAdd = require("./routes/playlistadd.js")
-const playlistDel = require("./routes/playlistdel.js")
-const selfPlaylist = require("./routes/playlist")
-const privatePlaylist = require("./routes/private")
-const OthersPlaylist = require("./routes/userplaylist");
+const favoriteAdd = require("./routes/favoriteadd.js")
+const favoriteDel = require("./routes/favoritedel.js")
+const favorites = require("./routes/favorites")
+const favoriteprivate = require("./routes/favoriteprivate")
+const OthersFavorite = require("./routes/otherfavorite");
 const { response } = require("express");
+const selfPlaylist = require("./routes/selfplaylist")
 
 
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
-app.use("/playlistadd",  playlistAdd)
-app.use("/playlistdel",  playlistDel)
-app.use('/playlist/', selfPlaylist)
-app.use('/pvt/', privatePlaylist)
-app.use('/pvt/', privatePlaylist)
-app.use("/userplaylist/", OthersPlaylist)
+app.use("/favoriteadd",  favoriteAdd)
+app.use("/favoritedel",  favoriteDel)
+app.use('/favorite', favorites)
+app.use('/favoritepvt/', favoriteprivate)
+app.use("/userplaylist/", OthersFavorite)
+app.use("/selfplaylist", selfPlaylist )
 
 
-if (process.env.NODE_ENV == 'production'){
-    app.use(express.static('client/build'));
-    app.get('*', (req,res)=> {
-        res.sendFile(path.resolve(__dirname, 'client', 'build','index.html'));
-    });
-}
+
+// if (process.env.NODE_ENV == 'production'){
+//     app.use(express.static('client/build'));
+//     app.get('*', (req,res)=> {
+//         res.sendFile(path.resolve(__dirname, 'client', 'build','index.html'));
+//     });
+// }
 
 const port = process.env.PORT || 5000
 
