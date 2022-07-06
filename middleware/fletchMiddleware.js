@@ -1,6 +1,4 @@
-
 const asyncHandler = require('express-async-handler')
-
 const {Playlist} = require("../models/playlist")
 
 const fletch = asyncHandler(async (req, res, next) => { 
@@ -20,12 +18,8 @@ const fletch = asyncHandler(async (req, res, next) => {
       
     } catch (error) {
       console.log(error)
-      res.status(401)
-      throw new Error('Not authorized')
+      res.status(500)
+      throw new Error('Internal Server Error')
     }
-  }
-
-  
-})
-
+  }})
 module.exports = { fletch }
