@@ -65,7 +65,7 @@ const PlaylistPage = () => {
         }
         return (
             <div className={styles.prvt_head}>
-                <h1 className={styles.heading_playlist}>{props.name}</h1>
+                
                 <div>
                 <button className={styles.white_btn} onClick={() => deleteplaylist(props.id)} >Delete</button>
                 <button className={styles.white_btn} onClick={() => privatefun(props.id, privt)} >
@@ -84,7 +84,7 @@ const PlaylistPage = () => {
     return (
         <div className={styles.main_container}>
             <nav className={styles.navbar}>
-                <h1>Movies Fun</h1>
+                <h1>Movies App</h1>
                 <div>
                     <button className={styles.white_btn}
                         onClick={() => window.location.replace("./")}
@@ -100,7 +100,9 @@ const PlaylistPage = () => {
             </nav>
 
             {movies.map((item) => (
-                <><div className={styles.options_playlist}>
+                <>
+                <h1 className={styles.heading_playlist}>{item.name}</h1>
+                <div className={styles.options_playlist}>
                     <Privatebody
                         id={item._id}
                         value={item.value}
