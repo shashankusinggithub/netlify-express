@@ -30,7 +30,7 @@ router.put("/addtoplaylist", async (req, res) => {
     const updated = await Playlist.findByIdAndUpdate(req.body.playid, {
       $addToSet: { playlist: req.body.movie },
     });
-    res.status(200).send(updated);
+    res.status(200).send({ msg: "added" });
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
   }
